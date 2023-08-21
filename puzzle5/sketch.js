@@ -46,7 +46,7 @@ function draw() {
   // start
   stroke(...FG);
   fill(...FG);
-  ellipse(CENTER_X, CENTER_Y - 188, 25)
+  ellipse(CENTER_X, CENTER_Y - 188, 30)
 
   // finish
   stroke(...FG);
