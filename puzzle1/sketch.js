@@ -36,6 +36,7 @@ function draw() {
   ellipse(CENTER_X + 125, CENTER_Y - 125, 25, 25);
   ellipse(CENTER_X - 125, CENTER_Y - 125, 25, 25);
   ellipse(CENTER_X - 50, CENTER_Y + 50, 25, 25);
+  ellipse(CENTER_X - 50, CENTER_Y - 50, 25, 25);
   
   stroke(...BLACK);
   fill(...BLACK);
