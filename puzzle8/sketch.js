@@ -23,9 +23,9 @@ function draw() {
   const CIRCLES = 8;
   for (let i = 0; i < CIRCLES; i++) {
     const angle = (i) * 360 / CIRCLES;
-    const x = CENTER_X + 107 * cos(radians(angle));
-    const y = CENTER_Y + 107 * sin(radians(angle));
-    arc(x, y, 250, 250, radians(angle - 165), radians(angle + 165));
+    const x = CENTER_X + 100 * cos(radians(angle));
+    const y = CENTER_Y + 100 * sin(radians(angle));
+    arc(x, y, 230, 230, radians(angle - 165), radians(angle + 165));
   }
 
   stroke(...WHITE);
