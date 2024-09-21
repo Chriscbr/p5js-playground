@@ -21,7 +21,7 @@ const COOKIE_SIZE = 50;
 const COOKIE_COUNT = 20;
 
 // Cookie coordinates will range from 0 to TRAY_WIDTH and TRAY_HEIGHT
-var cookiePositions = [];
+let cookiePositions = [];
 for (let i = 0; i < COOKIE_COUNT; i++) {
   cookiePositions.push({
     x: Math.random() * TRAY_WIDTH,
@@ -29,12 +29,35 @@ for (let i = 0; i < COOKIE_COUNT; i++) {
   });
 }
 
+let startTime;
+let temperature;
+
 function setup() {
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
+  frameRate(60);
+  reset();
+}
+
+function keyPressed() {
+  if (key === 'r') {
+    reset();
+  }
+}
+
+function reset() {
+  cookiePositions.length = 0;
+  for (let i = 0; i < COOKIE_COUNT; i++) {
+    cookiePositions.push({
+      x: Math.random() * TRAY_WIDTH,
+      y: Math.random() * TRAY_HEIGHT,
+    });
+  }
+  startTime = millis();
 }
 
 function draw() {
-  frameRate(60);
+  let elapsed = millis() - startTime;
+  temperature = 2000 / (elapsed + 1000);
 
   // Outline the canvas
   noStroke();
@@ -95,10 +118,11 @@ function draw() {
         }
       }
     }
+
     if (closestCookie) {
       let distance = Math.sqrt(Math.pow(cookie.x - closestCookie.x, 2) + Math.pow(cookie.y - closestCookie.y, 2));
-      cookie.x += (cookie.x - closestCookie.x) / distance * 2;
-      cookie.y += (cookie.y - closestCookie.y) / distance * 2;
+      cookie.x += (cookie.x - closestCookie.x) / distance * temperature;
+      cookie.y += (cookie.y - closestCookie.y) / distance * temperature;
     }
 
     // Move the cookie away from the tray edges
